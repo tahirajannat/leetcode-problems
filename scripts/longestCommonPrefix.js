@@ -1,42 +1,22 @@
-// function longestCommonPrefix(strs) {
-//     if (strs.length === 0) {
-//         return '';
-//     }
-
-//     let result = '';
-//     const firstStr = strs[0];
-
-//     for (let i = 0; i < firstStr.length; i++) {
-//         const char = firstStr[i];
-
-//         for (let j = 1; j < strs.length; j++) {
-//             if (i >= strs[j].length || strs[j][i] !== char) {
-//                 return result;
-//             }
-//         }
-
-//         result += char;
-//     }
-
-//     return result;
-// }
-// console.log(longestCommonPrefix(strs)); // Output: "fl"
-
-const strs = ['flower', 'flow', 'flight'];
-//     if (strs.length === 0) {
-//         return '';
-//     }
-let result = '';
-const firstStr = strs[''];
-
-for (let i = 0; i < firstStr.length; i++) {
-    const char = firstStr[i];
-    for (let j = 0; j < strs.length; j++) {
-        if (i >= strs[j].length || strs[j][i] !== char) {
-            return result; // Return the result when the characters don't match
-        }
+function longestCommonPrefix(strs) {
+    if (strs.length === 0) {
+        return '';
     }
-    result += char; // Add the character to the result
+    let prefix = '';
+    const firstString = strs[0];
+    for (let i = 0; i < firstString.length; i++) {
+        const prefixChar = firstString[i];
+        for (let j = 1; j < strs.length; j++) {
+            if (i >= strs[j].length || strs[j][i] !== prefixChar) {
+                console.log(strs[j][i]);
+                // return prefix;
+            }
+        }
+        prefix += prefixChar;
+    }
+    return prefix;
 }
 
-console.log(result); // Output: "fl"
+// const strs = ['dog', 'racecar', 'car'];
+const strs = ['flower', 'flow', 'flight'];
+console.log('ptrefix: ', longestCommonPrefix(strs)); // Output: "fl" for
