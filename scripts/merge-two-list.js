@@ -80,3 +80,14 @@ var mergeTwoLists = function (list1, list2) {
     return list3;
 };
 console.log(JSON.stringify(mergeTwoLists(list1, list2)));
+
+Array.prototype.last = function () {
+    return this.length === 0 ? -1 : this[this.length - 1];
+};
+
+/**
+ * const arr = [1, 2, 3];
+ * arr.last(); // 3
+ */
+const arr = [1, 2, 3];
+arr.last(); // 3
