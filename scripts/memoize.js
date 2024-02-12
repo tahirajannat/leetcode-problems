@@ -2,24 +2,24 @@
  * @param {Function} fn
  * @return {Function}
  */
-// function memoize(fn) {
-//     let cache = [];
-//     let inputs = [];
+function memoize(fn) {
+    let cache = [];
+    let inputs = [];
 
-//     return function (...args) {
-//         let result = [];
-//         let index = 0;
-//         if (!inputs.includes(JSON.stringify(args))) {
-//             inputs.push(JSON.stringify(args));
-//             result = fn(...args);
-//             cache.push(result);
-//             return result;
-//         } else {
-//             index = inputs.indexOf(JSON.stringify(args));
-//             return cache[index];
-//         }
-//     };
-// }
+    return function (...args) {
+        let result = [];
+        let index = 0;
+        if (!inputs.includes(JSON.stringify(args))) {
+            inputs.push(JSON.stringify(args));
+            result = fn(...args);
+            cache.push(result);
+            return result;
+        } else {
+            index = inputs.indexOf(JSON.stringify(args));
+            return cache[index];
+        }
+    };
+}
 function factorial(n) {
     if (n <= 1) {
         return 1;
