@@ -1,21 +1,31 @@
 var cancellable = function (fn, args, t) {
-    const timerId = setTimeout(() => {
-        const result = fn(...args);
-        // const output = { time: t, returned: result };
-        for (let i = 0; i < args.length; i++) {
-            const output = { time: t + i, returned: result };
+    // Initial execution
+    let res = fn(...args);
+    console.log(JSON.stringify({ time: 0, returned: res }));
 
-            console.log(JSON.stringify(output));
-        }
-        // const output2 = JSON.stringify(output);
+    let counter = 1;
+    let timer = setInterval(() => {
+        let res = fn(...args);
+        console.log(JSON.stringify({ time: counter * t, returned: res }));
+        counter++;
     }, t);
-    return function cancelFn() {
-        clearTimeout(timerId);
+
+    let cancelFn = () => {
+        clearInterval(timer);
     };
+
+    return cancelFn;
 };
 
-const fn = (x) => x * 5;
-const args = [2];
-const t = 20;
-const cancelFn = cancellable(fn, args, t);
-// console.log(JSON.stringify(output));
+// Example usage:
+let fn = (x1, x2, x3) => x1 + x2 + x3;
+let args = [5, 1, 3];
+let t = 50;
+
+let cancelFn = cancellable(fn, args, t);
+
+let cancelT = 180;
+setTimeout(() => {
+    cancelFn();
+    console.log('Function execution canceled.');
+}, cancelT);
