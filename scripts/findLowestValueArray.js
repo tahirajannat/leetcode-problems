@@ -33,3 +33,7 @@ var findHighestValueArray = function (arr) {
 var my_array = [7, 12, 9, 4, 11];
 
 console.log(findHighestValueArray(my_array));
+
+var min = Math.min(...my_array),
+    max = Math.max(...my_array);
+console.log('min: ' + min, 'max: ' + max);
