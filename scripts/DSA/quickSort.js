@@ -6,7 +6,7 @@ function quickSort(arr) {
         }
 
         arr[j + 1] = key;
-        console.log('insertionSort', arr);
+        console.log('quick sort', arr);
     }
 }
 var arr = [234, 235, 43, 55, 63, 5, 6, 547];
