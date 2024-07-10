@@ -1,13 +1,26 @@
-function quickSort(arr) {
-    for (var i = 0; i < arr.length; i++) {
-        let key = arr[i];
-        for (var j = i - 1; j >= 0, arr[j] > key; j--) {
-            arr[j + 1] = arr[j];
-        }
-
-        arr[j + 1] = key;
-        console.log('quick sort', arr);
+function quickSortFirstElPivot(arr) {
+    if (arr.length <= 1) {
+        return arr;
     }
+
+    let pivot = arr[arr.length - 1];
+    let leftArr = [];
+    let rightArr = [];
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            leftArr.push(arr[i]);
+        } else {
+            rightArr.push(arr[i]);
+        }
+    }
+
+    return [
+        ...quickSortFirstElPivot(leftArr),
+        pivot,
+        ...quickSortFirstElPivot(rightArr),
+    ];
 }
+
 var arr = [234, 235, 43, 55, 63, 5, 6, 547];
-quickSort(arr);
+console.log(quickSortFirstElPivot(arr));
